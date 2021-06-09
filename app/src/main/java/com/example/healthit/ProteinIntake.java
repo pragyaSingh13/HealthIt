@@ -12,7 +12,7 @@ import android.widget.TextView;
 public class ProteinIntake extends AppCompatActivity {
     Button button;
     TextView tv,tvc;
-    EditText editText;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,11 +20,13 @@ public class ProteinIntake extends AppCompatActivity {
         setContentView(R.layout.activity_protein_intake);
         button = findViewById(R.id.button3);
         tv = findViewById(R.id.textView5);
-        editText = findViewById(R.id.tvprotein);
+        tvc = findViewById(R.id.textView13);
       button.setOnClickListener(new View.OnClickListener() {
-            Float weight = Float.parseFloat(editText.getText().toString());
+
             @Override
             public void onClick(View v) {
+                EditText editText = (EditText)findViewById(R.id.tvprotein);
+                float weight = Float.parseFloat(editText.getText().toString());
                Double ff = (float)weight*0.8;
                String val = ff.toString();
                tv.setText(val+"per day");
