@@ -8,4 +8,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="maingreen">#53AE6D</color>
+    <color name="MYRED">#FF0909</color>
 </resources>

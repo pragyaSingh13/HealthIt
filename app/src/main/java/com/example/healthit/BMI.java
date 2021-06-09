@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,7 +15,7 @@ import android.widget.TextView;
 public class BMI extends AppCompatActivity {
 EditText weighttext, highttext;
 Button button;
-TextView textView,convert;
+TextView textView,convert,chart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,18 +26,25 @@ TextView textView,convert;
         button = findViewById(R.id.button);
         textView = findViewById(R.id.textView3);
         convert = findViewById(R.id.textView7);
+        chart = findViewById(R.id.tv20);
 
         convert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                convert.setTextColor(Color.parseColor("#FF0909"));
                 Intent intent = new Intent(getBaseContext(),dialog.class);
                 startActivity(intent);
+            }
+        });
+        chart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chart.setTextColor(Color.parseColor("#FF0909"));
             }
         });
 
         button.setOnClickListener(new View.OnClickListener() {
             AlertDialog alertDialog = new AlertDialog.Builder(BMI.this).create();
-
 
 
             @Override

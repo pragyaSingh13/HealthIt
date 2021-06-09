@@ -9,7 +9,10 @@
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.NoActionBar">
-        <activity android:name=".dialog" android:theme="@style/Theme.AppCompat.Dialog" ></activity>
+        <activity android:name=".chart" android:theme="@style/Theme.AppCompat.Dialog"></activity>
+        <activity
+            android:name=".dialog"
+            android:theme="@style/Theme.AppCompat.Dialog" />
         <activity android:name=".ProteinIntake" />
         <activity android:name=".idealWeight" />
         <activity android:name=".BMR" />
