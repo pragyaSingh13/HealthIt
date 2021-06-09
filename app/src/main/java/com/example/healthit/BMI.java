@@ -27,11 +27,12 @@ TextView textView,convert,chart;
         textView = findViewById(R.id.textView3);
         convert = findViewById(R.id.textView7);
         chart = findViewById(R.id.tv20);
+        chart.setTextColor(Color.parseColor("#FF0909"));
 
         convert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                convert.setTextColor(Color.parseColor("#FF0909"));
+
                 Intent intent = new Intent(getBaseContext(),dialog.class);
                 startActivity(intent);
             }
@@ -39,7 +40,7 @@ TextView textView,convert,chart;
         chart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                chart.setTextColor(Color.parseColor("#FF0909"));
+
                 Intent intent = new Intent(getBaseContext(), com.example.healthit.chart.class);
                 startActivity(intent);
             }
