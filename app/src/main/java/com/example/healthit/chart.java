@@ -3,15 +3,23 @@ package com.example.healthit;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 public class chart extends AppCompatActivity {
-    ImageView igv;
+    Button btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chart);
-        igv = findViewById(R.id.imageView3);
+        btn = findViewById(R.id.button6);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 }

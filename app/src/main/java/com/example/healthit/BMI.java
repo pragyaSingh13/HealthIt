@@ -40,6 +40,8 @@ TextView textView,convert,chart;
             @Override
             public void onClick(View v) {
                 chart.setTextColor(Color.parseColor("#FF0909"));
+                Intent intent = new Intent(getBaseContext(), com.example.healthit.chart.class);
+                startActivity(intent);
             }
         });
 
