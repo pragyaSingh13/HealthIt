@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class Home extends Activity {
-    Button bmibutton,bmrbutton,idealbutton,caloriebutton,proteinbutton;
+    Button bmibutton,bmrbutton,idealbutton,caloriebutton,proteinbutton,tips;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +19,7 @@ public class Home extends Activity {
         idealbutton = (Button)findViewById(R.id.idealbutton);
         caloriebutton = (Button)findViewById(R.id.caloriebutton);
         proteinbutton =(Button) findViewById(R.id.proteinbutton);
+        tips = (Button) findViewById(R.id.healthtip);
 
         bmibutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +46,13 @@ public class Home extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),ProteinIntake.class);
+                startActivity(intent);
+            }
+        });
+        tips.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getBaseContext(),Web.class);
                 startActivity(intent);
             }
         });
