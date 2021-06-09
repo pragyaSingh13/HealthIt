@@ -21,7 +21,7 @@ public class ProteinIntake extends AppCompatActivity {
         button = findViewById(R.id.button3);
         tv = findViewById(R.id.textView5);
         editText = findViewById(R.id.tvprotein);
-       /* button.setOnClickListener(new View.OnClickListener() {
+      button.setOnClickListener(new View.OnClickListener() {
             Float weight = Float.parseFloat(editText.getText().toString());
             @Override
             public void onClick(View v) {
@@ -30,14 +30,14 @@ public class ProteinIntake extends AppCompatActivity {
                tv.setText(val+"per day");
 
             }
-        });*/
+        });
 
-        /*tvc.setOnClickListener(new View.OnClickListener() {
+        tvc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getBaseContext(),dialog.class);
                 startActivity(intent);
             }
-        });*/
+        });
     }
 }

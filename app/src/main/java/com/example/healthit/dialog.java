@@ -91,17 +91,18 @@ public class dialog extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position == 0) {
                     if (spin3.getSelectedItemPosition() == 0) {
-                        ed2.setText(""+height1);
+                        ed4.setText(""+height1);
 
                     } else if (spin3.getSelectedItemPosition() == 1) {
-                        ed2.setText("" + height1* 2.25);
+                        ed4.setText("" + height1* 2.25);
 
                     }
                 } else if (position == 1) {
                     if (spin3.getSelectedItemPosition() == 1) {
-                        ed2.setText("" + height1);
+                        ed4.setText("" + height1);
                     } else if (spin3.getSelectedItemPosition() == 0) {
-                        ed2.setText("" + height1 / 2.25);
+                        ed4.setText("" + height1 / 2.25);
+                        ed4.setText("60065");
                     }
                 }
             }
