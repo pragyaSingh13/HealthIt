@@ -16,6 +16,7 @@ public class BMI extends AppCompatActivity {
 EditText weighttext, highttext;
 Button button;
 TextView textView,convert,chart;
+    public float bmi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,14 +38,7 @@ TextView textView,convert,chart;
                 startActivity(intent);
             }
         });
-        chart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                Intent intent = new Intent(getBaseContext(), com.example.healthit.chart.class);
-                startActivity(intent);
-            }
-        });
 
         button.setOnClickListener(new View.OnClickListener() {
             AlertDialog alertDialog = new AlertDialog.Builder(BMI.this).create();
@@ -62,7 +56,7 @@ TextView textView,convert,chart;
                 try {
                     float height = Float.parseFloat(highttext.getText().toString());
                     float weight = Float.parseFloat(weighttext.getText().toString());
-                    float bmi = weight / (height * height);
+                    bmi = weight / (height * height);
                     textView.setText(""+bmi);
 
 
@@ -74,7 +68,15 @@ TextView textView,convert,chart;
 
             }
         });
+        chart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                Intent intent = new Intent(getBaseContext(), com.example.healthit.chart.class);
+                intent.putExtra("key1",bmi);
+                startActivity(intent);
+            }
+        });
 
 
 
