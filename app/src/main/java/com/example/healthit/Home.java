@@ -15,11 +15,10 @@ public class Home extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        bmibutton = findViewById(R.id.bmibutton);
-        bmrbutton = findViewById(R.id.caloriebutton);
-        idealbutton = findViewById(R.id.idealbutton);
-        caloriebutton = findViewById(R.id.caloriebutton);
-        proteinbutton = findViewById(R.id.proteinbutton);
+        bmibutton = (Button)findViewById(R.id.bmibutton);
+        idealbutton = (Button)findViewById(R.id.idealbutton);
+        caloriebutton = (Button)findViewById(R.id.caloriebutton);
+        proteinbutton =(Button) findViewById(R.id.proteinbutton);
 
         bmibutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -28,25 +27,24 @@ public class Home extends Activity {
                 startActivity(intent);
             }
         });
-        bmrbutton.setOnClickListener(new View.OnClickListener() {
+        idealbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(),BMR.class);
+                Intent intent = new Intent(getApplicationContext(),idealWeight.class);
+                startActivity(intent);
+            }
+        });
+        caloriebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),BMR.class);
                 startActivity(intent);
             }
         });
         proteinbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(),ProteinIntake.class);
-                startActivity(intent);
-
-            }
-        });
-        idealbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(),idealWeight.class);
+                Intent intent = new Intent(getApplicationContext(),ProteinIntake.class);
                 startActivity(intent);
             }
         });

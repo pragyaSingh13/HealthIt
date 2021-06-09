@@ -27,7 +27,7 @@ public class idealWeight extends AppCompatActivity {
         fbtn = findViewById(R.id.radioButton);
         mbtn = findViewById(R.id.radioButton4);
         tv  =findViewById(R.id.textView4);
-        tvc = findViewById(R.id.textView11);
+        tvc = findViewById(R.id.textView12);
 
         button.setOnClickListener(new View.OnClickListener() {
             char sex;

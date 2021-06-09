@@ -39,7 +39,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/edittText4"
+            android:id="@+id/et4"
             android:layout_width="129dp"
             android:layout_height="49dp"
             android:layout_marginStart="72dp"
@@ -49,6 +49,7 @@
             android:ems="10"
             android:hint="height"
             android:inputType="numberDecimal"
+            android:text="00"
             android:textColor="#000000"
             android:textColorHint="#9A9494"
             app:layout_constraintStart_toStartOf="parent"
@@ -64,7 +65,7 @@
             android:background="@color/maingreen"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/editText3"
+            app:layout_constraintStart_toEndOf="@+id/et3"
             app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
         <TextView
@@ -92,11 +93,11 @@
             android:background="@color/maingreen"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/editText3"
+            app:layout_constraintStart_toEndOf="@+id/et3"
             app:layout_constraintTop_toBottomOf="@+id/spinner3" />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/et2"
             android:layout_width="129dp"
             android:layout_height="49dp"
             android:layout_marginStart="72dp"
@@ -106,6 +107,7 @@
             android:ems="10"
             android:hint="weight"
             android:inputType="numberDecimal"
+            android:text="00"
             android:textColor="#000000"
             android:textColorHint="#9A9494"
             app:layout_constraintStart_toStartOf="parent"
@@ -121,11 +123,11 @@
             android:background="@color/maingreen"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/editText3"
+            app:layout_constraintStart_toEndOf="@+id/et3"
             app:layout_constraintTop_toBottomOf="@+id/spinner2" />
 
         <EditText
-            android:id="@+id/editText3"
+            android:id="@+id/et3"
             android:layout_width="129dp"
             android:layout_height="49dp"
             android:layout_marginStart="72dp"
@@ -136,6 +138,7 @@
             android:ems="10"
             android:hint="height"
             android:inputType="numberDecimal"
+            android:text="00"
             android:textColor="#000000"
             android:textColorHint="#9A9494"
             app:layout_constraintBottom_toTopOf="@+id/edittText4"
@@ -151,11 +154,11 @@
             android:layout_marginLeft="1dp"
             android:layout_marginTop="56dp"
             android:background="@color/maingreen"
-            app:layout_constraintStart_toEndOf="@+id/editText1"
+            app:layout_constraintStart_toEndOf="@+id/et1"
             app:layout_constraintTop_toBottomOf="@+id/weightid" />
 
         <EditText
-            android:id="@+id/editText1"
+            android:id="@+id/et1"
             android:layout_width="129dp"
             android:layout_height="49dp"
             android:layout_marginStart="72dp"
@@ -165,10 +168,12 @@
             android:ems="10"
             android:hint="weight"
             android:inputType="numberDecimal"
+            android:text="00"
             android:textColor="#000000"
             android:textColorHint="#9A9494"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/weightid" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
