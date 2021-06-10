@@ -18,9 +18,8 @@ public class chart extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chart);
         btn = findViewById(R.id.button6);
-        tv = findViewById(R.id.textView10);
-        Intent intent = getIntent();
-        tv.setText(""+intent.getExtras());
+
+
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

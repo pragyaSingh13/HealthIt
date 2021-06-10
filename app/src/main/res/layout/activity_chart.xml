@@ -20,42 +20,17 @@
         app:layout_constraintVertical_bias="0.591"
         app:srcCompat="@drawable/bmichart" />
 
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="111dp"
-        android:layout_height="33dp"
-        android:layout_marginBottom="16dp"
-        android:text="Your BMI:"
-        android:textColor="@color/maingreen"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="192dp"
-        android:layout_height="72dp"
-        android:layout_marginStart="-40dp"
-        android:layout_marginLeft="-40dp"
-        android:layout_marginBottom="16dp"
-        android:gravity="bottom|center"
-        android:text="TextView"
-        android:textColor="@color/maingreen"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView8" />
-
     <Button
         android:id="@+id/button6"
         android:layout_width="70dp"
         android:layout_height="36dp"
+        android:layout_marginStart="304dp"
+        android:layout_marginLeft="304dp"
         android:layout_marginBottom="16dp"
         android:background="@color/maingreen"
         android:text="OK"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView10" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
