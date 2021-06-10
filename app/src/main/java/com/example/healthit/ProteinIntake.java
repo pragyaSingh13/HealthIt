@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 public class ProteinIntake extends AppCompatActivity {
     Button button;
-    TextView tv,tvc;
+    TextView tv,tvc,tv3;
 
 
     @Override
@@ -21,6 +21,7 @@ public class ProteinIntake extends AppCompatActivity {
         button = findViewById(R.id.button3);
         tv = findViewById(R.id.textView5);
         tvc = findViewById(R.id.textView13);
+        tv3 = findViewById(R.id.gramtext);
       button.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -28,8 +29,9 @@ public class ProteinIntake extends AppCompatActivity {
                 EditText editText = (EditText)findViewById(R.id.tvprotein);
                 float weight = Float.parseFloat(editText.getText().toString());
                Double ff = (float)weight*0.8;
-               String val = ff.toString();
-               tv.setText(val+"per day");
+               String val =ff.toString();
+               tv.setText(Math.round(ff)+"");
+               tv3.setText("grams/day");
 
             }
         });
