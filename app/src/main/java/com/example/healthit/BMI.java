@@ -56,8 +56,8 @@ TextView textView,convert,chart;
                 try {
                     float height = Float.parseFloat(highttext.getText().toString());
                     float weight = Float.parseFloat(weighttext.getText().toString());
-                    bmi = (weight / height * height)*10000;
-                    textView.setText(""+bmi);
+                    bmi = (weight /( height * height)*10000);
+                    textView.setText((""+bmi).substring(0,5));
 
 
                 }catch(Exception e){
