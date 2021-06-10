@@ -38,13 +38,13 @@
         android:id="@+id/textView6"
         android:layout_width="288dp"
         android:layout_height="168dp"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="70dp"
         android:background="@drawable/buttonbg"
         android:gravity="center"
         android:textColor="@color/maingreen"
         android:textSize="60sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.552"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button2" />
 
@@ -54,13 +54,14 @@
         android:layout_height="49dp"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
+        android:layout_marginTop="50dp"
         android:background="@color/maingreen"
         android:text="calculate"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.452"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+        app:layout_constraintTop_toTopOf="@+id/radioGroup"
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
@@ -79,7 +80,7 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.22"
+        app:layout_constraintHorizontal_bias="0.172"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/weightxt"
         app:layout_constraintVertical_bias="0.0" />
@@ -90,7 +91,7 @@
         android:layout_height="70dp"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/itembg"
         android:ems="10"
         android:hint="Enter weight in lbs"
@@ -99,7 +100,7 @@
         android:textColorHint="#B1B0B0"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.385"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hightxt" />
 
@@ -109,7 +110,7 @@
         android:layout_height="70dp"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/itembg"
         android:ems="10"
         android:hint="Enter height in inches"
@@ -118,7 +119,7 @@
         android:textColorHint="#B1B0B0"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.385"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleview3" />
 
@@ -126,9 +127,9 @@
         android:id="@+id/textView"
         android:layout_width="171dp"
         android:layout_height="26dp"
-        android:layout_marginStart="76dp"
-        android:layout_marginLeft="76dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginLeft="64dp"
+        android:layout_marginTop="2dp"
         android:text="Gender-"
         android:textColor="@color/maingreen"
         android:textSize="20sp"
@@ -152,6 +153,7 @@
             android:layout_height="49dp"
             android:layout_weight="1"
             android:background="@color/white"
+            android:gravity="top"
             android:text="Female"
             android:textColor="#090909"
             android:textSize="16sp" />
@@ -162,6 +164,7 @@
             android:layout_height="49dp"
             android:layout_weight="1"
             android:background="@color/white"
+            android:gravity="top"
             android:text="Male"
             android:textColor="#191919"
             android:textSize="16sp" />

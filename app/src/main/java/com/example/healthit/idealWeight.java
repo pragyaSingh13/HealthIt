@@ -26,39 +26,10 @@ public class idealWeight extends AppCompatActivity {
         heighttext = findViewById(R.id.high);
         fbtn = findViewById(R.id.radioButton);
         mbtn = findViewById(R.id.radioButton4);
-        tv  =findViewById(R.id.textView4);
+        tv  =findViewById(R.id.tv22);
         tvc = findViewById(R.id.textView12);
 
-        button.setOnClickListener(new View.OnClickListener() {
-            char sex;
-            @Override
-            public void onClick(View v) {
-                Float height = Float.parseFloat(heighttext.getText().toString());
-                double hincm = (float) height/2.54;
 
-                if(fbtn.isSelected()){
-                     sex= 'f';
-                }
-                else{
-                    sex = 'm';
-                }
-                Float ideal;
-                if(sex=='f'){
-                    ideal = height-100-((height-150)/2);
-                    String val = ideal.toString();
-                    tv.setText(val+"kg");
-                }
-                else if(sex =='m'){
-                    ideal = height-100-((height-150)/4);
-                    String val = ideal.toString();
-                    tv.setText(val+"kg");
-                }
-                else{
-                    Toast.makeText(idealWeight.this, "Select your gender first", Toast.LENGTH_SHORT).show();
-                }
-
-            }
-        });
         tvc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
