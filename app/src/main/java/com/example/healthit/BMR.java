@@ -53,12 +53,12 @@ public class BMR extends AppCompatActivity {
 
                 if(sex=='f'){
                    double bmr = 655.1+(4.35*weight/*lbs*/) + (4.7*height/*inch*/) - (4.7*age);
-                   String value = Double.toString(bmr);
+                   String value = Double.toString(Math.round(bmr));
                    tv.setText(value);
                 }
                 else{
                     double bmr = 66.47+(6.24*weight)+(12.7*height)-(6.755*age);
-                    String val = Double.toString(bmr);
+                    String val = Double.toString(Math.round(bmr));
                     tv.setText(val);
                 }
             }
