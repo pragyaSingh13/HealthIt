@@ -2,6 +2,7 @@ package com.example.healthit;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.UiAutomation;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -25,8 +26,8 @@ public class dialog extends AppCompatActivity {
         spin2 = (Spinner)findViewById(R.id.spinner1);
         spin3 = (Spinner)findViewById(R.id.spinner3);
         spin4 = (Spinner)findViewById(R.id.spinner4);
-        ed3 = findViewById(R.id.et3);
-        ed4 = findViewById(R.id.et4);
+
+
 
         ArrayList weightlist = new ArrayList();
         weightlist.add("kg");
@@ -49,8 +50,9 @@ public class dialog extends AppCompatActivity {
 
              ed1 = findViewById(R.id.et1);
              ed2 = findViewById(R.id.et2);
+             ed2.setText("");
+             ed2.setEnabled(false);
              float weight1 = Float.parseFloat(ed1.getText().toString());
-             float weight2 = Float.parseFloat(ed2.getText().toString());
 
              if(spin2.getSelectedItemPosition()==0){
                  if(spin1.getSelectedItemPosition()==0){
@@ -66,6 +68,41 @@ public class dialog extends AppCompatActivity {
                  }
                  else if(spin1.getSelectedItemPosition()==1){
                      ed2.setText(""+weight1);
+                 }
+
+             }
+
+         }
+         @Override
+         public void onNothingSelected(AdapterView<?> parent) {
+
+         }
+     });
+
+     spin4.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+         @Override
+         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+             ed3 = findViewById(R.id.et3);
+             ed4 = findViewById(R.id.et4);
+             ed4.setText("");
+             ed4.setEnabled(false);
+             float height1 = Float.parseFloat(ed3.getText().toString());
+
+             if(spin4.getSelectedItemPosition()==0){
+                 if(spin3.getSelectedItemPosition()==0){
+                     ed4.setText(""+height1);
+                 }
+                 else if(spin3.getSelectedItemPosition()==1){
+                     ed4.setText((""+(height1/2.54)).substring(0,5));
+                 }
+             }
+             else if(spin4.getSelectedItemPosition()==1){
+                 if(spin3.getSelectedItemPosition()==0){
+                     ed4.setText((""+(height1*2.205)).substring(0,5));
+                 }
+                 else if(spin3.getSelectedItemPosition()==1){
+                     ed4.setText(""+height1);
                  }
 
              }
