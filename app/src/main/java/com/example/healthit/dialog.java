@@ -25,8 +25,6 @@ public class dialog extends AppCompatActivity {
         spin2 = (Spinner)findViewById(R.id.spinner1);
         spin3 = (Spinner)findViewById(R.id.spinner3);
         spin4 = (Spinner)findViewById(R.id.spinner4);
-        ed1 = findViewById(R.id.et1);
-        ed2 = findViewById(R.id.et2);
         ed3 = findViewById(R.id.et3);
         ed4 = findViewById(R.id.et4);
 
@@ -45,76 +43,40 @@ public class dialog extends AppCompatActivity {
         spin3.setAdapter(adapter2);
         spin4.setAdapter(adapter2);
 
-        String s1 = ed1.getText().toString();
-        String s2 = ed2.getText().toString();
-        float weight1 = Float.parseFloat(s1);
-        float weight2 = Float.parseFloat(s2);
-        String s3 = ed3.getText().toString();
-        String s4 = ed4.getText().toString();
-        float height1 = Float.parseFloat(s3);
-        float height2 = Float.parseFloat(s4);
+     spin2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+         @Override
+         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-        spin2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (position == 0) {
-                    if (spin1.getSelectedItemPosition()== 0) {
-                        ed2.setText(""+weight1);
+             ed1 = findViewById(R.id.et1);
+             ed2 = findViewById(R.id.et2);
+             float weight1 = Float.parseFloat(ed1.getText().toString());
+             float weight2 = Float.parseFloat(ed2.getText().toString());
 
-                    }
-                    else if(spin1.getSelectedItemPosition()==1){
-                        ed2.setText(""+weight1*2.205);
+             if(spin2.getSelectedItemPosition()==0){
+                 if(spin1.getSelectedItemPosition()==0){
+                     ed2.setText(""+weight1);
+                 }
+                 else if(spin1.getSelectedItemPosition()==1){
+                     ed2.setText((""+(weight1/2.205)).substring(0,5));
+                 }
+             }
+             else if(spin2.getSelectedItemPosition()==1){
+                 if(spin1.getSelectedItemPosition()==0){
+                     ed2.setText((""+(weight1*2.205)).substring(0,5));
+                 }
+                 else if(spin1.getSelectedItemPosition()==1){
+                     ed2.setText(""+weight1);
+                 }
 
-                    }
-                }
-                else if(position==1){
-                    if(spin1.getSelectedItemPosition()==1){
-                        ed2.setText(""+weight1);
-                    }
-                    else if(spin1.getSelectedItemPosition()==0){
-                        ed2.setText(""+weight1/2.205);
-                    }
-                }
-            }
+             }
 
+         }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                Toast.makeText(dialog.this, "PLease  select a unit", Toast.LENGTH_SHORT).show();
+         @Override
+         public void onNothingSelected(AdapterView<?> parent) {
 
-            }
-        });
-
-
-        spin4.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (position == 0) {
-                    if (spin3.getSelectedItemPosition() == 0) {
-                        ed4.setText(""+height1);
-
-                    } else if (spin3.getSelectedItemPosition() == 1) {
-                        ed4.setText("" + height1* 2.25);
-
-                    }
-                } else if (position == 1) {
-                    if (spin3.getSelectedItemPosition() == 1) {
-                        ed4.setText("" + height1);
-                    } else if (spin3.getSelectedItemPosition() == 0) {
-                        ed4.setText("" + height1 / 2.25);
-                        ed4.setText("60065");
-                    }
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                Toast.makeText(dialog.this, "Please select a unit", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-
+         }
+     });
     }
 }
 
