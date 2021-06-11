@@ -109,7 +109,6 @@
       android:layout_height="99dp"
       android:layout_marginTop="14dp"
       android:gravity="center"
-      android:text="TextView"
       android:textColor="#4DB6AC"
       android:textSize="20sp"
       app:layout_constraintEnd_toEndOf="parent"

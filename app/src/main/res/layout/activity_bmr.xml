@@ -38,7 +38,7 @@
         android:id="@+id/textView6"
         android:layout_width="288dp"
         android:layout_height="168dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="60dp"
         android:background="@drawable/buttonbg"
         android:gravity="center"
         android:textColor="@color/maingreen"
@@ -66,10 +66,10 @@
 
     <EditText
         android:id="@+id/agetxt"
-        android:layout_width="138dp"
-        android:layout_height="68dp"
-        android:layout_marginStart="23dp"
-        android:layout_marginLeft="23dp"
+        android:layout_width="278dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
         android:layout_marginTop="28dp"
         android:background="@drawable/itembg"
         android:ems="10"
@@ -80,7 +80,7 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.172"
+        app:layout_constraintHorizontal_bias="0.385"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/weightxt"
         app:layout_constraintVertical_bias="0.0" />
@@ -88,7 +88,7 @@
     <EditText
         android:id="@+id/weightxt"
         android:layout_width="278dp"
-        android:layout_height="70dp"
+        android:layout_height="62dp"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
         android:layout_marginTop="12dp"
@@ -107,7 +107,7 @@
     <EditText
         android:id="@+id/hightxt"
         android:layout_width="278dp"
-        android:layout_height="70dp"
+        android:layout_height="62dp"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
         android:layout_marginTop="8dp"
