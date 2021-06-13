@@ -9,6 +9,23 @@
 
 
     <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="124dp"
+        android:layout_marginBottom="480dp"
+        android:gravity="center"
+        android:text="Tip: Log your weight after every fifth day instead of everyday"
+        android:textColor="#ACA8A8"
+        android:textSize="16sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/titleview5"
         android:layout_width="286dp"
         android:layout_height="115dp"
@@ -26,9 +43,46 @@
         android:id="@+id/linechart"
         android:layout_width="379dp"
         android:layout_height="371dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="52dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleview5" />
+
+    <EditText
+        android:id="@+id/editTextNumber"
+        android:layout_width="209dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="72dp"
+        android:ems="10"
+        android:hint="Enter your current weight"
+        android:inputType="number"
+        android:textColorHint="#9A9494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linechart" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="86dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="74dp"
+        android:background="@color/maingreen"
+        android:text="Log Weight"
+        app:layout_constraintStart_toEndOf="@+id/editTextNumber"
+        app:layout_constraintTop_toBottomOf="@+id/linechart" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="72dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linechart"
+        app:srcCompat="@drawable/reset" />
 </androidx.constraintlayout.widget.ConstraintLayout>
