@@ -14,6 +14,6 @@ public class Web extends AppCompatActivity {
         setContentView(R.layout.activity_web);
         web = findViewById(R.id.webv);
         web.getSettings().setJavaScriptEnabled(true);
-        web.loadUrl("https://apracticalteen.home.blog");
+        web.loadUrl("https://apracticalteen.home.blog/2021/06/13/weight-management-tips-for-teens-and-adults-that-actually-work/");
     }
 }

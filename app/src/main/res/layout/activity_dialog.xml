@@ -26,16 +26,16 @@
             android:id="@+id/weightid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="155dp"
-            android:layout_marginLeft="155dp"
-            android:layout_marginTop="52dp"
+            android:layout_marginStart="140dp"
+            android:layout_marginLeft="140dp"
+            android:layout_marginTop="36dp"
             android:layout_marginEnd="166dp"
             android:layout_marginRight="166dp"
             android:text="Weight"
             android:textColor="#004D40"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.352"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -72,8 +72,8 @@
             android:id="@+id/textView9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="164dp"
-            android:layout_marginLeft="164dp"
+            android:layout_marginStart="140dp"
+            android:layout_marginLeft="140dp"
             android:layout_marginTop="60dp"
             android:layout_marginBottom="248dp"
             android:text="Height"
@@ -81,7 +81,8 @@
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et2" />
+            app:layout_constraintTop_toBottomOf="@+id/et2"
+            app:layout_constraintVertical_bias="0.545" />
 
         <Spinner
             android:id="@+id/spinner4"

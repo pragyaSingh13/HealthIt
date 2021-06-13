@@ -40,8 +40,8 @@ public class BMR extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                int weight = Integer.parseInt(weighttext.getText().toString());
-                int height = Integer.parseInt(heighttext.getText().toString());
+                float weight = Float.parseFloat(weighttext.getText().toString());
+                float height = Float.parseFloat(heighttext.getText().toString());
                 int age = Integer.parseInt(agek.getText().toString());
                 if(fbtn.isSelected()){
                     sex = 'f';
@@ -54,12 +54,12 @@ public class BMR extends AppCompatActivity {
                 if(sex=='f'){
                    double bmr = 655.1+(4.35*weight/*lbs*/) + (4.7*height/*inch*/) - (4.7*age);
                    String value = Double.toString(Math.round(bmr));
-                   tv.setText(value+"cals");
+                   tv.setText((value+"").substring(0,4));
                 }
                 else{
                     double bmr = 66.47+(6.24*weight)+(12.7*height)-(6.755*age);
                     String val = Double.toString(Math.round(bmr));
-                    tv.setText(val+"cals");
+                    tv.setText((val+"").substring(0,4));
                 }
             }
         });
