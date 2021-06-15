@@ -7,7 +7,6 @@
     tools:context=".Tracker"
     android:background="@color/white">
 
-
     <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
@@ -19,7 +18,6 @@
         android:textColor="#ACA8A8"
         android:textSize="16sp"
         android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,8 +50,8 @@
         android:id="@+id/editTextNumber"
         android:layout_width="209dp"
         android:layout_height="51dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
         android:layout_marginTop="72dp"
         android:ems="10"
         android:hint="Enter your current weight"
@@ -66,8 +64,8 @@
         android:id="@+id/button5"
         android:layout_width="86dp"
         android:layout_height="43dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="74dp"
         android:background="@color/maingreen"
         android:text="Log Weight"
@@ -78,11 +76,24 @@
         android:id="@+id/imageButton"
         android:layout_width="72dp"
         android:layout_height="59dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
         android:background="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linechart"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/reset" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="249dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="28dp"
+        android:gravity="center|left"
+        android:text="Last Updated: "
+        android:textColor="#000000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linechart" />
 </androidx.constraintlayout.widget.ConstraintLayout>
