@@ -56,6 +56,7 @@
         android:ems="10"
         android:hint="Enter your current weight"
         android:inputType="number"
+        android:textColor="#000000"
         android:textColorHint="#9A9494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linechart" />
@@ -86,14 +87,15 @@
 
     <TextView
         android:id="@+id/textView14"
-        android:layout_width="249dp"
-        android:layout_height="31dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginLeft="44dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="283dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:background="#FFFFFF"
         android:gravity="center|left"
         android:text="Last Updated: "
         android:textColor="#000000"
+        android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linechart" />
 </androidx.constraintlayout.widget.ConstraintLayout>
