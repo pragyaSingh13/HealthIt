@@ -47,7 +47,7 @@
         app:layout_constraintTop_toBottomOf="@+id/titleview5" />
 
     <EditText
-        android:id="@+id/editTextNumber"
+        android:id="@+id/edt1"
         android:layout_width="209dp"
         android:layout_height="51dp"
         android:layout_marginStart="40dp"
@@ -69,7 +69,7 @@
         android:layout_marginTop="74dp"
         android:background="@color/maingreen"
         android:text="Log Weight"
-        app:layout_constraintStart_toEndOf="@+id/editTextNumber"
+        app:layout_constraintStart_toEndOf="@+id/edt1"
         app:layout_constraintTop_toBottomOf="@+id/linechart" />
 
     <ImageButton

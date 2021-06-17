@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +29,7 @@ import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import org.ocpsoft.prettytime.PrettyTime;
 import org.w3c.dom.Text;
 
+import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
@@ -43,8 +45,10 @@ import java.lang.Object.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
     public class Tracker extends AppCompatActivity {
@@ -52,6 +56,7 @@ import java.util.concurrent.TimeUnit;
         ImageButton imageButton;
         Button button;
         static TextView timeView;
+        EditText editText;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +66,7 @@ import java.util.concurrent.TimeUnit;
             imageButton = findViewById(R.id.imageButton);
             timeView = findViewById(R.id.textView14);
             button = findViewById(R.id.button5);
+            editText = findViewById(R.id.edt1);
 
             String date = readDate();
             if(date==new SimpleDateFormat("dd-MM-yyyy").format(Calendar.getInstance().getTime())){
@@ -76,17 +82,13 @@ import java.util.concurrent.TimeUnit;
             mChart.setBorderColor(new Color().parseColor("#53AE6D"));
             mChart.setDrawGridBackground(false);
             mChart.setGridBackgroundColor(new Color().parseColor("#53AE6D"));
+            try {
+                Float[] points = readChartValue();
+                createGraph(mChart, points);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
 
-            ArrayList<Entry> yValues = new ArrayList<>();
-            yValues.add(new Entry(0, 60f));
-            yValues.add(new Entry(2, 50f));
-            yValues.add(new Entry(3, 60f));
-            yValues.add(new Entry(5, 70f));
-            yValues.add(new Entry(6, 30f));
-            yValues.add(new Entry(7, 20f));
-            yValues.add(new Entry(8, 50f));
-
-            createGraph(yValues, mChart);
 
             imageButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -101,7 +103,20 @@ import java.util.concurrent.TimeUnit;
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             mChart.clear();
-                            yValues.clear();
+                            FileWriter fwOb = null;
+                            try {
+                                fwOb = new FileWriter("chartdata.text", false);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            PrintWriter pwOb = new PrintWriter(fwOb, false);
+                            pwOb.flush();
+                            pwOb.close();
+                            try {
+                                fwOb.close();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
                         }
                     });
                     builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -125,13 +140,26 @@ import java.util.concurrent.TimeUnit;
                     String timeStamp = new SimpleDateFormat("dd-MM-yyyy").format(Calendar.getInstance().getTime());
                     writedate(timeStamp);
                     timeView.setText("Last Updated: Today");
+                    float value = Float.parseFloat(editText.getText().toString());
+                    writeChartValue(value);
+                    try {
+                        Float[] points = readChartValue();
+                        createGraph(mChart, points);
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+
                 }
             });
 
         }
 
-        public static void createGraph(ArrayList yValues, LineChart mChart) {
-
+        public static void createGraph(LineChart mChart, Float[] points) {
+            ArrayList<Entry> yValues = new ArrayList<>();
+            for(int i=0; i <points.length;i++){
+                  yValues.add(new Entry(i, points[i]));
+            }
+          //  yValues.add(new Entry(0, 60f));
             LineDataSet set1 = new LineDataSet(yValues, "Weight");
             set1.setFillAlpha(110);
             set1.setColor(new Color().parseColor("#3F51B5"));
@@ -146,11 +174,13 @@ import java.util.concurrent.TimeUnit;
 
         }
 
+
+///////////////////////////////////////////////////////////////////////////////////////////////
         public String readDate() {
             String date = "xyz";
             Context context = Tracker.this;
             try {
-                InputStream inputStream = context.openFileInput("lastdate.txt");
+                InputStream inputStream = context.openFileInput("chartdata.txt");
 
                 if (inputStream != null) {
                     InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
@@ -166,9 +196,9 @@ import java.util.concurrent.TimeUnit;
                     return date;
                 }
             } catch (FileNotFoundException e) {
-                Log.e("login activity", "File not found: " + e.toString());
+                Log.e("error", "File not found: " + e.toString());
             } catch (IOException e) {
-                Log.e("login activity", "Can not read file: " + e.toString());
+                Log.e("error", "Can not read file: " + e.toString());
             }
             return date;
         }
@@ -182,6 +212,33 @@ import java.util.concurrent.TimeUnit;
             } catch (IOException e) {
                 Toast.makeText(Tracker.this, "Error!", Toast.LENGTH_SHORT).show();
             }
+        }
+
+        public void writeChartValue(float value){
+            Context context = Tracker.this;
+            try {
+                OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput("lastdate.txt", Context.MODE_PRIVATE));
+                outputStreamWriter.write(String.valueOf(value));
+                outputStreamWriter.close();
+            } catch (IOException e) {
+                Toast.makeText(Tracker.this, "Error!", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        public Float[] readChartValue() throws FileNotFoundException {
+            Scanner inFile1 = new Scanner(new File("chartdata.txt")).useDelimiter(",\\s*");
+            List<Float> temps = new ArrayList<Float>();
+
+            // while loop
+            while (inFile1.hasNext()) {
+                // find next line
+                float token1 = inFile1.nextFloat();
+                temps.add(token1);
+            }
+            inFile1.close();
+
+            Float[] points = temps.toArray(new Float[0]);
+            return points;
         }
 
     }
