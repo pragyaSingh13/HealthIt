@@ -73,7 +73,7 @@ import java.util.concurrent.TimeUnit;
             readDate(timeView);
             try {
                 Float[] points = readChartValue();
-                editText.setText(points[2]+"");
+                createGraph(mChart,points);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -151,9 +151,12 @@ import java.util.concurrent.TimeUnit;
         public void createGraph(LineChart mChart, Float[] points) {
             mChart = findViewById(R.id.linechart);
             ArrayList<Entry> yValues = new ArrayList<>();
+            float f =0.5f;
 
             for (int i = 0; i < points.length; i++) {
-                yValues.add(new Entry(i, points[i]));
+                f+=0.5f;
+                yValues.add(new Entry(f, points[i]));
+                f+=0.5f;
             }
             LineDataSet set1 = new LineDataSet(yValues, "Weight");
             set1.setFillAlpha(110);
@@ -161,6 +164,7 @@ import java.util.concurrent.TimeUnit;
             set1.setLineWidth(2f);
             set1.setValueTextSize(15f);
             set1.setValueTextColor(new Color().parseColor("#53AE6D"));
+            set1.setCircleRadius(5f);
 
             ArrayList<ILineDataSet> dataSets = new ArrayList<>();
             dataSets.add(set1);
