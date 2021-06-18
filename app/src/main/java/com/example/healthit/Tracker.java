@@ -29,6 +29,7 @@ import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import org.ocpsoft.prettytime.PrettyTime;
 import org.w3c.dom.Text;
 
+import java.io.FileReader;
 import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -43,6 +44,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.lang.Object.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -69,8 +71,12 @@ import java.util.concurrent.TimeUnit;
             editText = findViewById(R.id.edt1);
 
             readDate(timeView);
-
-
+            try {
+                Float[] points = readChartValue();
+                editText.setText(points[2]+"");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
             //Chart
             mChart.setDragEnabled(true);
@@ -78,15 +84,6 @@ import java.util.concurrent.TimeUnit;
             mChart.setBorderColor(new Color().parseColor("#53AE6D"));
             mChart.setDrawGridBackground(false);
             mChart.setGridBackgroundColor(new Color().parseColor("#53AE6D"));
-            Float[] points = new Float[0];
-            try {
-                points = readChartValue();
-                createGraph(mChart, points);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-
-
 
             imageButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -136,41 +133,44 @@ import java.util.concurrent.TimeUnit;
                 @Override
                 public void onClick(View v) {
                     String timeStamp = new SimpleDateFormat("MMMM d, yyyy").format(Calendar.getInstance().getTime());
-                    writedate(timeStamp);
-                    readDate(timeView);
-                    float value = Float.parseFloat(editText.getText().toString());
-                    writeChartValue(value);
+                    String text = editText.getText().toString();
+                    if (text.matches("")) {
+                        Toast.makeText(Tracker.this, "Please enter your weight first!", Toast.LENGTH_SHORT).show();
+                    } else {
+                        float value = Float.parseFloat(text);
+                        Toast.makeText(Tracker.this, "weehee", Toast.LENGTH_SHORT).show();
+                        writedate(timeStamp);
+                        readDate(timeView);
 
-
+                    }
                 }
             });
 
         }
 
-        public  void createGraph(LineChart mChart, Float[] points) {
+        public void createGraph(LineChart mChart, Float[] points) {
             mChart = findViewById(R.id.linechart);
             ArrayList<Entry> yValues = new ArrayList<>();
 
+            for (int i = 0; i < points.length; i++) {
+                yValues.add(new Entry(i, points[i]));
+            }
+            LineDataSet set1 = new LineDataSet(yValues, "Weight");
+            set1.setFillAlpha(110);
+            set1.setColor(new Color().parseColor("#3F51B5"));
+            set1.setLineWidth(2f);
+            set1.setValueTextSize(15f);
+            set1.setValueTextColor(new Color().parseColor("#53AE6D"));
 
-                for (int i = 0; i < points.length; i++) {
-                    yValues.add(new Entry(i, points[i]));
-                }
-                LineDataSet set1 = new LineDataSet(yValues, "Weight");
-                set1.setFillAlpha(110);
-                set1.setColor(new Color().parseColor("#3F51B5"));
-                set1.setLineWidth(2f);
-                set1.setValueTextSize(15f);
-                set1.setValueTextColor(new Color().parseColor("#53AE6D"));
-
-                ArrayList<ILineDataSet> dataSets = new ArrayList<>();
-                dataSets.add(set1);
-                LineData data = new LineData(dataSets);
-                mChart.setData(data);
+            ArrayList<ILineDataSet> dataSets = new ArrayList<>();
+            dataSets.add(set1);
+            LineData data = new LineData(dataSets);
+            mChart.setData(data);
 
         }
 
 
-///////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////
         public void readDate(TextView textView) {
             String date = "xyz";
             textView = findViewById(R.id.textView14);
@@ -189,7 +189,7 @@ import java.util.concurrent.TimeUnit;
                     }
                     inputStream.close();
                     date = stringBuilder.toString();
-                    textView.setText("Last Updated: "+date);
+                    textView.setText("Last Updated: " + date);
                 }
             } catch (FileNotFoundException e) {
                 Log.e("error", "File not found: " + e.toString());
@@ -209,31 +209,50 @@ import java.util.concurrent.TimeUnit;
             }
         }
 
-        public void writeChartValue(float value){
-            Context context = Tracker.this;
-            try {
-                OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput("chartdata.txt", Context.MODE_PRIVATE));
-                outputStreamWriter.append(String.valueOf(value));
-                outputStreamWriter.write("\n");
-                outputStreamWriter.close();
-            } catch (IOException e) {
-                Toast.makeText(Tracker.this, "Error!", Toast.LENGTH_SHORT).show();
-            }
+        public void writeChartValue(float value) {
+
         }
 
-        public Float[] readChartValue() throws FileNotFoundException {
-            Scanner inFile1 = new Scanner(new File("chartdata.txt")).useDelimiter(",\\s*");
-            List<Float> temps = new ArrayList<Float>();
+        public Float[] readChartValue() throws IOException {
+            InputStream inputStreamcounter;
+            BufferedReader bufferedReadercounter;
+            InputStream inputStreamloader;
+            BufferedReader bufferedReaderloader;
+            String[] points;
+            int count =0 ;
 
-            // while loop
-            while (inFile1.hasNext()) {
-                float token1 = inFile1.nextFloat();
-                temps.add(token1);
-            }
-            inFile1.close();
+            inputStreamcounter  = this.getResources().openRawResource(R.raw.chartvalues);
+            bufferedReadercounter = new BufferedReader(new InputStreamReader(inputStreamcounter));
 
-            Float[] points = temps.toArray(new Float[0]);
-            return points;
+            inputStreamloader = this.getResources().openRawResource(R.raw.chartvalues);
+            bufferedReaderloader = new BufferedReader(new InputStreamReader(inputStreamloader));
+            try{
+                while(bufferedReadercounter.readLine()!=null){
+                    count++;
+                }
+
+            }catch(Exception e){}
+
+            points = new String[count];
+
+            try{
+                for( int  i =0 ;i <count; i++){
+                   points[i] = bufferedReaderloader.readLine();
+                }//////////////////////////////////////
+                Float[] floatarray = null;
+
+                if (points != null) {
+                    floatarray = new Float[points.length];
+
+                    try {
+                        for (int i = 0; i < points.length; i++) {
+                            floatarray[i] = Float.parseFloat(points[i]);
+                        }
+                    } catch (NumberFormatException e) {}
+                }
+                return floatarray;
+            }catch(Exception e){}
+            return null;
         }
 
     }
