@@ -29,8 +29,11 @@ import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import org.ocpsoft.prettytime.PrettyTime;
 import org.w3c.dom.Text;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
@@ -71,12 +74,13 @@ import java.util.concurrent.TimeUnit;
             editText = findViewById(R.id.edt1);
 
             readDate(timeView);
+            List<Float> points = null;
             try {
-                Float[] points = readChartValue();
-                createGraph(mChart,points);
+                points = readChartValue();
             } catch (IOException e) {
-                e.printStackTrace();
+                Toast.makeText(this, "oops! Somehting went wrong", Toast.LENGTH_SHORT).show();
             }
+            createGraph(mChart,points);
 
             //Chart
             mChart.setDragEnabled(true);
@@ -128,6 +132,7 @@ import java.util.concurrent.TimeUnit;
                 }
             });
 
+
             button.setOnClickListener(new View.OnClickListener() {
                 @RequiresApi(api = Build.VERSION_CODES.N)
                 @Override
@@ -137,25 +142,29 @@ import java.util.concurrent.TimeUnit;
                     if (text.matches("")) {
                         Toast.makeText(Tracker.this, "Please enter your weight first!", Toast.LENGTH_SHORT).show();
                     } else {
-                        float value = Float.parseFloat(text);
-                        Toast.makeText(Tracker.this, "weehee", Toast.LENGTH_SHORT).show();
                         writedate(timeStamp);
                         readDate(timeView);
-
+                        String weight = editText.getText().toString();
+                        try {
+                            writeChartValue(weight+"f");
+                        } catch (FileNotFoundException e) {
+                            e.printStackTrace();
+                        }
+                        Toast.makeText(Tracker.this, "weight logged! reopen the activity. ", Toast.LENGTH_LONG).show();
                     }
                 }
             });
 
         }
 
-        public void createGraph(LineChart mChart, Float[] points) {
+        public void createGraph(LineChart mChart,List<Float> points) {
             mChart = findViewById(R.id.linechart);
             ArrayList<Entry> yValues = new ArrayList<>();
             float f =0.5f;
 
-            for (int i = 0; i < points.length; i++) {
+            for (int i = 1; i < points.size(); i++) {
                 f+=0.5f;
-                yValues.add(new Entry(f, points[i]));
+                yValues.add(new Entry(f, points.get(i)));
                 f+=0.5f;
             }
             LineDataSet set1 = new LineDataSet(yValues, "Weight");
@@ -213,50 +222,53 @@ import java.util.concurrent.TimeUnit;
             }
         }
 
-        public void writeChartValue(float value) {
-
+        public void writeChartValue(String value) throws FileNotFoundException {
+            Context context = Tracker.this;
+            try {
+                OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput("chartvalues.csv", Context.MODE_APPEND));
+                outputStreamWriter.write(value+"\n");
+                outputStreamWriter.close();
+                Toast.makeText(context, "Weight Logged!", Toast.LENGTH_SHORT).show();
+            } catch (IOException e) {
+                Toast.makeText(Tracker.this, "Error!", Toast.LENGTH_SHORT).show();
+            }
         }
 
-        public Float[] readChartValue() throws IOException {
-            InputStream inputStreamcounter;
-            BufferedReader bufferedReadercounter;
-            InputStream inputStreamloader;
-            BufferedReader bufferedReaderloader;
-            String[] points;
-            int count =0 ;
+        public List<Float> readChartValue() throws IOException {
+            Context context = Tracker.this;
+            String[] data = new String[10];
+            List<Float> list1 = null;
+            try {
+                InputStream inputStream = context.openFileInput("chartvalues.csv");
 
-            inputStreamcounter  = this.getResources().openRawResource(R.raw.chartvalues);
-            bufferedReadercounter = new BufferedReader(new InputStreamReader(inputStreamcounter));
+                if (inputStream != null) {
+                    InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+                    BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                    String receiveString = "";
+                    StringBuilder stringBuilder = new StringBuilder();
 
-            inputStreamloader = this.getResources().openRawResource(R.raw.chartvalues);
-            bufferedReaderloader = new BufferedReader(new InputStreamReader(inputStreamloader));
-            try{
-                while(bufferedReadercounter.readLine()!=null){
-                    count++;
+                    while ((receiveString = bufferedReader.readLine()) != null) {
+                        stringBuilder.append("\n").append(receiveString);
+                    }
+                    inputStream.close();
+                    data = stringBuilder.toString().split("\n");
+                    list1 = new ArrayList<Float>();
+                    if(data == null){
+                        list1.add(0f);
+                        return list1;
+                    }
+                    for(int i =1 ; i<data.length; i++){
+                        list1.add(Float.parseFloat(data[i-1]));
+                    }
+                    return list1;
+
                 }
-
-            }catch(Exception e){}
-
-            points = new String[count];
-
-            try{
-                for( int  i =0 ;i <count; i++){
-                   points[i] = bufferedReaderloader.readLine();
-                }//////////////////////////////////////
-                Float[] floatarray = null;
-
-                if (points != null) {
-                    floatarray = new Float[points.length];
-
-                    try {
-                        for (int i = 0; i < points.length; i++) {
-                            floatarray[i] = Float.parseFloat(points[i]);
-                        }
-                    } catch (NumberFormatException e) {}
-                }
-                return floatarray;
-            }catch(Exception e){}
-            return null;
+            } catch (FileNotFoundException e) {
+                Log.e("error", "File not found: " + e.toString());
+            } catch (IOException e) {
+                Log.e("error", "Can not read file: " + e.toString());
+            }
+            return list1;
         }
 
     }
