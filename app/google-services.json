@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "148663415863",
+    "project_id": "healthit-5402a",
+    "storage_bucket": "healthit-5402a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:148663415863:android:b87727df90f76b6ec73bb2",
+        "android_client_info": {
+          "package_name": "com.example.healthit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "148663415863-h7m8rpjknk8hj36gj51sk1lbrseqrcqo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDo_2NJNosfJoniOQCweKqezGmZGHUXBeE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "148663415863-h7m8rpjknk8hj36gj51sk1lbrseqrcqo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

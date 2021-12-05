@@ -8,6 +8,22 @@
     tools:context=".BMI"
     android:background="@color/white">
 
+  <EditText
+      android:id="@+id/heighttext"
+      android:layout_width="268dp"
+      android:layout_height="63dp"
+      android:layout_marginTop="28dp"
+      android:background="@drawable/itembg"
+      android:ems="10"
+      android:hint="Enter weight in kg"
+      android:inputType="textPersonName"
+      android:textColor="#252525"
+      android:textSize="20sp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.482"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/titleview2" />
+
   <TextView
       android:id="@+id/titleview2"
       android:layout_width="286dp"
@@ -22,20 +38,7 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent" />
 
-  <EditText
-      android:id="@+id/heighttext"
-      android:layout_width="269dp"
-      android:layout_height="63dp"
-      android:layout_marginTop="20dp"
-      android:background="@drawable/itembg"
-      android:ems="10"
-      android:hint="Enter height in cm"
-      android:inputType="textPersonName"
-      android:textColor="#000000"
-      android:textSize="20sp"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/titleview2" />
+
 
   <EditText
       android:id="@+id/weighttext"
@@ -115,5 +118,6 @@
       app:layout_constraintHorizontal_bias="0.491"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/tv20" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

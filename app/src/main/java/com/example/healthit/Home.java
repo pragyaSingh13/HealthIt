@@ -5,11 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class Home extends Activity {
     Button bmibutton,bmrbutton,idealbutton,caloriebutton,proteinbutton,tips,tracker;
+    private Button logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +25,15 @@ public class Home extends Activity {
         proteinbutton =(Button) findViewById(R.id.proteinbutton);
         tips = (Button) findViewById(R.id.healthtip);
         tracker = (Button)findViewById(R.id.tracker);
+        logout = findViewById(R.id.logout);
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(getBaseContext(), LogIn.class));
+            }
+        });
 
         bmibutton.setOnClickListener(new View.OnClickListener() {
             @Override
