@@ -1,6 +1,7 @@
 # HealthIt
 
 <img src= "images/Screenshot_2021-06-07-21-14-45-022_com.example.healthit.jpg" height = "400" width = "200">
+<img src = "images/Screenshot_2021-12-06-04-07-11-047_com.example.healthit.jpg" height = "400" width = "200">
 <img src= "images/s1.jpg" height = "400" width = "200">
 <img src= "images/s2.jpg" height = "400" width = "200">
 <img src= "images/s3.jpg" height = "400" width = "200">
