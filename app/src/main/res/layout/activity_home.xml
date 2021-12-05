@@ -9,29 +9,43 @@
 
 
     <TextView
-        android:id="@+id/titleview"
-        android:layout_width="286dp"
-        android:layout_height="115dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
+        android:id="@+id/textView17"
+        android:layout_width="0dp"
+        android:layout_height="103dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
         android:layout_marginTop="16dp"
-        android:text="HOME"
-        android:textColor="@color/maingreen"
-        android:textSize="24sp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="Health"
+        android:textColor="#1B451A"
+        android:textSize="48sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="0dp"
+        android:layout_height="103dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="It."
+        android:textColor="#BFBEBE"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/textView17"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="336dp"
         android:layout_height="179dp"
-        android:layout_marginTop="660dp"
-        android:layout_marginEnd="124dp"
-        android:layout_marginRight="124dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="136dp"
+        android:layout_marginRight="136dp"
         android:src="@drawable/inchtape"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
