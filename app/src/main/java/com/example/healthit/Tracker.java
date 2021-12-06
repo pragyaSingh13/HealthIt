@@ -74,7 +74,7 @@ import java.util.concurrent.TimeUnit;
             editText = findViewById(R.id.edt1);
 
             readDate(timeView);
-            List<Float> points = null;
+            List<Float> points = new ArrayList<>();
             try {
                 points = readChartValue();
             } catch (IOException e) {
